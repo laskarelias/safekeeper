@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
+import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -54,3 +54,17 @@ class Ui_DroneWindow(object):
         self.CloseButton.setText(_translate("DroneWindow", "Close"))
         self.RecallDroneButton.setText(_translate("DroneWindow", "Recall Drone"))
         self.CheckSectorOKButton.setText(_translate("DroneWindow", "Go"))
+
+
+    @staticmethod
+    def chooseSector():
+        sector = random.rand()
+        print("Selected sector: ", sector)
+
+    @staticmethod
+    def chooseRecall():
+        recall = random.rand()
+        if recall < 100:
+            print("recalling drone")
+        else:
+            print("no need to recall")

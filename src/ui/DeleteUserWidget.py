@@ -86,3 +86,74 @@ class Ui_DeleteUserWidget(object):
         self.RFIDCodeText.setText(_translate("DeleteUserWidget", "RFID Code"))
         self.CancelButton.setText(_translate("DeleteUserWidget", "Cancel"))
 
+@staticmethod
+    def insertData(data):
+        # Query to Database
+        return data
+
+    @staticmethod
+    def pinAuthorization(pin):
+        flag = False
+        # QUERY
+        if flag:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def isDocumentAttached():
+        isAttached = True
+        # checker algo
+        if isAttached:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def saveDocument():
+        # save to DB
+        return True
+
+    @staticmethod
+    def disableRFIDCard():
+        card = None
+        # scan rfid card
+        # remove from DB
+        return True
+
+    @staticmethod
+    def writeToAccessLogs():
+        # write to logs
+        return True
+
+    @staticmethod
+    def isNotRegistered():
+        exists = False
+        # check DB
+        if exists:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def isRFIDCardValid():
+        card = None
+        # scan rfid card
+        if card:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def readRFIDCard():
+        card = None
+        data = None
+        # scan card
+        return data
+
+    @staticmethod
+    def isFullNameValid(name):
+        if len(name) > 5:
+            return True
+        else:
+            return False

@@ -10,6 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .pin_util import pin_authorization
 
+
 class Ui_SilentAlarmWidget(object):
 
     def __init__(self, ctx):
@@ -20,10 +21,10 @@ class Ui_SilentAlarmWidget(object):
 
     def __on_pin_auth(self, result):
         print(f'Pin Auth for Silent Alarm: {result}')
-        
+
         if result:
             print('Notifying central office')
-        
+
         self.__window.close()
 
     def setupUi(self, SilentAlarmWidget):
@@ -55,3 +56,8 @@ class Ui_SilentAlarmWidget(object):
         self.label.setText(_translate("SilentAlarmWidget", "Description:"))
         self.OKButton.setText(_translate("SilentAlarmWidget", "Alarm"))
         self.CancelButton.setText(_translate("SilentAlarmWidget", "Cancel"))
+
+    @staticmethod
+    def fillDescription(text):
+        print(text)
+        return True

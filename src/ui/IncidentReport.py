@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'IncidentReportWindow.ui'
@@ -5,6 +7,7 @@
 # Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+>>>>>>> c20687d4e68f6506f00e80ee167a2b806a537998
 from PyQt5 import QtCore, QtGui, QtWidgets
 from domain import SecurityIncident, CentralOffice, AccessLog
 from .pin_util import pin_authorization

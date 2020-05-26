@@ -1,16 +1,16 @@
 from datetime import datetime
 
 class CentralOffice:
-<<<<<<< HEAD
-	@staticmethod
-	def notifyIncorrectPin(time, pin, sector):
-		print(f'time: {time}, pin: {pin}, sector: {sector}')
-		# send to some random server
+        
+    @staticmethod
+    def notifyIncorrectPin(time, pin, sector):
+        print(f'time: {time}, pin: {pin}, sector: {sector}')
+	# send to some random server
 
-	@staticmethod
-	def sendReport(text):
-		print(f'Sent report to central office {text}')
-=======
+    @staticmethod
+    def sendReport(text):
+        print(f'Sent report to central office {text}')
+
     @staticmethod
     def notifyIncorrectPin(time, pin, sector):
         print(f'time: {time}, pin: {pin}, sector: {sector}')
@@ -28,6 +28,4 @@ class CentralOffice:
         time = datetime.now()
         print(f'Anonynmous Incident Report, {incident}, {time}')
 
-
->>>>>>> 055f35c0100046451d2e3ec4aef3afab1b16a947
 

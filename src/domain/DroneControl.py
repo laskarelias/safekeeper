@@ -1,36 +1,56 @@
 class DroneControl:
-    def connectToDrone(drone_id):
-        if drone_id == 1:
-            print("Connected to drone")
+
+    @staticmethod
+    def connectToDrone():
+        isConnected = False
+        # check connection with drone
+        if isConnected:
             return True
-        else: 
-            print("Could Not Connect to drone")
+        else:
             return False
 
-
-    def checkInactivity(drone_id):
-        if drone_id == 1:
-            print("Drone is active")
-            return False
-        else: 
-            print("Drone isnt active")
-            self.autoRecall(drone_id)
+    @staticmethod
+    def checkInactivity():
+        newIncident = False
+        # check for incidents
+        if newIncident:
+            print("stay")
             return True
+        else:
+            print("leave")
+            return False
 
-    def autoRecall(drone_id):
-        if self.connectToDrone(drone_id):
-            print("Recalling Drone")
-        else
-            print("Drone isnt online")
+    @staticmethod
+    def autoRecall(self):
+        activity = self.checkInactivity()
+        if activity:
+            print("stay")
+        else:
+            print("leave")
 
-    def recogniseIncident(drone_id):
-        #todo
 
-    def photosAndLivestream(drone_id):
-        #todo
-
-    def backOnline(drone_id):
-        #dummy
+    @staticmethod
+    def recogniseIncident():
+        #drone blackbox
         return True
 
-        
+
+    @staticmethod
+    def photosAndLivestream():
+        livestream = True
+        photos = True
+        return livestream, photos
+
+
+
+
+    @staticmethod
+    def backOnline(self):
+        connection = False
+        # Retry to connect
+        if connection:
+            print("Connected")
+            return True
+        else:
+            print("recalling")
+            self.autoRecall()

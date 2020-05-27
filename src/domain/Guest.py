@@ -1,7 +1,6 @@
+from . import HumanEntity
 
-import HumanEntity
-
-class Guest(HumanEntity.HumanEntity):
+class Guest(HumanEntity):
     
     def __init__(self, expiryDate, id, accessLevel):
         self.expiryDate = expiryDate

@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'MainMenuWindow.ui'
-#
-# Created by: PyQt5 UI code generator 5.14.2
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .ActivityLogWindow import Ui_ActivityLogWindow
 from .DeleteUserWidget import Ui_DeleteUserWidget

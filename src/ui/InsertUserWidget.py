@@ -5,6 +5,7 @@ from domain import AccessLevel
 from domain import DocumentAttachment
 from domain import RFIDCardData
 
+
 class Ui_InsertUserWidget(object):
 
     def __init__(self, ctx):
@@ -18,8 +19,8 @@ class Ui_InsertUserWidget(object):
             if registered:
                 self.showMessage('already registered employee')
                 return
-            
-            accessLevelValid = AccessLevel.isAccessLevelValid(True, 1) # todo: add correct params
+
+            accessLevelValid = AccessLevel.isAccessLevelValid(True, 1)  # todo: add correct params
             if not accessLevelValid:
                 self.showMessage('invalid access level')
                 return
@@ -28,19 +29,18 @@ class Ui_InsertUserWidget(object):
             if not fullNameValid:
                 self.showMessage('invalid full name')
                 return
-            
+
             expiryDateValid = self.isExpiryDateValid()
             if not expiryDateValid:
                 self.showMessage('invalid expiry date')
                 return
 
         # end if employee
-        self.pinAuthorization()    
-
+        self.pinAuthorization()
 
     def isEmployee(self):
         return not self.GuestCheckBox.isChecked()
-    
+
     def pinAuthorization(self):
         pin_authorization(self.ctx, self._pinCallback)
 
@@ -51,13 +51,13 @@ class Ui_InsertUserWidget(object):
             if documentAttached and self.isEmployee():
                 atch = DocumentAttachment(str(self.NotesText.text()))
                 atch.save()
-            
+
             # write rfid card
             # write access logs
             # show menu
         else:
             self.showMessage('pin auth fail')
-        
+
     def showMessage(self, text):
         # todo: show message somewhere
         print(text)
@@ -65,14 +65,14 @@ class Ui_InsertUserWidget(object):
     def isFullNameValid(self):
         name = str(self.NameInput.text)
         # todo: add more checks
-        return ' ' in name 
+        return ' ' in name
 
     def isExpiryDateValid(self):
         return True
 
     def isDocumentAttached(self):
         notes = str(self.NotesText.text())
-        return notes is not None and len(notes) > 0        
+        return notes is not None and len(notes) > 0
 
     def setupUi(self, InsertUserWidget):
         InsertUserWidget.setObjectName("InsertUserWidget")
@@ -138,3 +138,16 @@ class Ui_InsertUserWidget(object):
         self.GuestCheckBox.setText(_translate("InsertUserWidget", "Guest"))
         self.IDText.setText(_translate("InsertUserWidget", "ID:"))
         self.ExpirationDateText.setText(_translate("InsertUserWidget", "Expires:"))
+
+    @staticmethod
+    def chooseSector():
+        sector = random.rand()
+        print("Selected sector: ", sector)
+
+    @staticmethod
+    def chooseRecall():
+        recall = random.rand()
+        if recall < 100:
+            print("recalling drone")
+        else:
+            print("no need to recall")

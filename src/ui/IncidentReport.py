@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'IncidentReportWindow.ui'
@@ -5,15 +7,42 @@
 # Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
-
-
+>>>>>>> c20687d4e68f6506f00e80ee167a2b806a537998
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from domain import SecurityIncident, CentralOffice, AccessLog
+from .pin_util import pin_authorization
 
 class Ui_IncidentReportWindow(object):
 
     def __init__(self, ctx):
         self.ctx = ctx
+
+    def fillInDetails(self, timestamp=None, type=None, description=None, image=None):
+        # begin sequence implementation here
+        # todo
+        if timestamp is None:
+            timestamp = str(self.TimestampText.text())
+            #if len(timestamp) == 0:
+                #timestamp = time.now()
+        
+        # continue for others...
+        incident = SecurityIncident()
+        self.incident = incident
+        #incident.fillInDetails(...)
+
+        self.pinAuthorization()
+
+    def pinAuthorization(self):
+        pin_authorization(self.ctx, self._pinCallback)
+
+    def _pinCallback(self, result):
+        if result:
+            # todo: show main menu
+            AccessLog.writeIncidentToAccessLogs(self.incident)
+        else:
+            CentralOffice.sendReport(self.incident)
+            AccessLog.writeIncidentToAccessLogs(self.incident)
+            #todo: show popup
 
     def setupUi(self, IncidentReportWindow):
         IncidentReportWindow.setObjectName("IncidentReportWindow")

@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[greek, english]{babel}
+\usepackage{alphabeta}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+\def\code#1{\texttt{#1}}
+
+\usepackage{eso-pic}% http://ctan.org/pkg/eso-pic
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+
+\title{Sequence Diagrams - v0.1}
+
+\author{\\
+\includegraphics[width=3in]{safeguard}\\[1ex]\\\\
+}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\noident Editor: Θεόδωρος Ντάκουρης - ntakouris@ceid.upatras.gr - 1054332\\
+\\
+
+\begin{tabular}{|l|c|c|}
+\hline
+Όνοματεπώνυμο & email & Αριθμός μητρώου  \\
+\hline
+Θεόδωρος Ντάκουρης & ntakouris@ceid.upatras.gr & 1054332 \\
+Βασίλειος Βασιλόπουλος & vvasil@ceid.upatras.gr &  1054410 \\
+Νικόλαος Σουλτάνης & soultanis@ceid.upatras.gr & 1054319  \\
+Βάιος Λασκαρέλιας & laskarelias@ceid.upatras.gr & 1054432 \\
+Αντόν Πάπα & papa@ceid.upatras.gr & 1054337 \\
+\hline
+\end{tabular}
+
+\renewcommand{\contentsname}{Περιεχόμενα}
+\tableofcontents
+
+\section{Διαγράμματα}
+Για δική σας ευκολία παρακαλώ να δείτε πέρα από τα screenshots το παρακάτω view-only link από draw.io:
+
+\url{https://drive.google.com/file/d/1rz80aLc-ANrePA-Cp7dHEdO9CIeHcxwW/view?usp=sharing}
+
+\subsection{Check In-Out}
+
+
+\noindent RFID Check In - Out: \\
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-rfid1.png}}
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-rfid2.png}}
+
+\subsection{Insert Employee}
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-insert1.png}}
+\newpage
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-insert2.png}}
+
+\subsection{Delete Employee}
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-del1.png}}
+\newpage
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-del2.png}}
+
+
+\subsection{Search Access Logs}
+\noindent\makebox[\textwidth]{\includegraphics{seq-search.png}}
+
+\subsection{Drone Notifications}
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-drone.png}}
+
+\subsection{Incident Submission}
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-incident.png}}
+
+
+\subsection{Send Drone}
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-send.png}}
+
+\subsection{Silent Alarm}
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-silent.png}}
+
+
+\subsection{Pin Authorization}
+\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{seq-pin.png}}
+
+\newpage
+
+\section{Εργαλεία}
+Χρησιμοποιήθηκαν:
+\begin{itemize}
+    \item \LaTeX/Overleaf.com - Συγγραφή του παρόντος τεχνικού κειμένου
+    \item Photoshop - Φωτογραφία Σελίδας Τίτλου
+    \item draw.io - Σχεδιασμός διαγραμμάτων
+\end{itemize}
+
+\end{document}

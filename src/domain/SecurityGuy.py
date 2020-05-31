@@ -1,5 +1,5 @@
 
-from domain import Employee
+from .Employee import Employee
 
 class SecurityGuy(Employee):
 

@@ -6,4 +6,3 @@ class Employee(HumanEntity):
         super().__init__(fullname)
         self.id = id
         self.accessLevel = accessLevel
-

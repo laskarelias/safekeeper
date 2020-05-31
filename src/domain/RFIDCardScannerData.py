@@ -5,7 +5,7 @@ class RFIDCardScannerData:
         self.isCheckIn = isCheckIn
 
     def accessLevelCheck(self):
-        return True # todo
+        return True
 
     def isSectorAllowed(self):
-        return True #todo
+        return True

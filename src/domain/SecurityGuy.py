@@ -14,4 +14,8 @@ class SecurityGuy(Employee):
     @staticmethod
     def doesPinExist(pin):
         # this is the database
-        return pin in [1234, 5678, 1111, 0000, 9999] or pin in SecurityGuy.pins
+        #return pin in [1234, 5678, 1111, 0000, 9999] or pin in SecurityGuy.pins
+        if pin in [1234, 5678, 1111, 0000, 9999]:
+            return True
+        else:
+            return False

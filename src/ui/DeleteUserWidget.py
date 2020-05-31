@@ -86,7 +86,7 @@ class Ui_DeleteUserWidget(object):
         self.RFIDCodeText.setText(_translate("DeleteUserWidget", "RFID Code"))
         self.CancelButton.setText(_translate("DeleteUserWidget", "Cancel"))
 
-@staticmethod
+    @staticmethod
     def insertData(data):
         # Query to Database
         return data

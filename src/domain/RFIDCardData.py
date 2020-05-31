@@ -1,4 +1,5 @@
 from hardware import RFIDCardScanner
+import datetime
 
 class RFIDCardData:
     def __init__(self, expiration, employeeId, isGuest):
@@ -6,15 +7,27 @@ class RFIDCardData:
         self.employeeId = employeeId
         self.isGuest = isGuest
 
-    def writeRFIDCard(self):
-        print('write rfid card')
-    
-    @staticmethod
-    def readRFIDCardData():
-        return None, False # return data, succes
+    def writeRFIDCard(self, expiration = None, employeeId = None, isGuest = None):
+        if expiration is not None:
+            self.expiration = expiration
+            print('new expiration set')
+        if employeeId is not None:
+            self.employeeId = employeeId
+            print('new employeeId set')
+        if isGuest is not None:
+            self.isGuest = isGuest
+            print('new isGuest set')
 
-    @staticmethod
-    def isRFIDCardExpired(card):
-        return False # todo: implement
+    
+    def readRFIDCardData(self):
+        print
+        return self.expiration, self.employeeId, self.isGuest
+
+    def isRFIDCardExpired(self):
+        if self.expiration >= datetime.datetime.today().day:
+            return False
+        else:
+            return True
+        
     
     

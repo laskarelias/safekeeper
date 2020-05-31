@@ -1,43 +1,57 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .pin_util import pin_authorization
+from domain import Employee
 from domain import EmployeeSchedule
 from domain import AccessLevel
 from domain import DocumentAttachment
 from domain import RFIDCardData
-
+from domain import SecurityGuy
 
 class Ui_InsertUserWidget(object):
 
     def __init__(self, ctx):
         self.ctx = ctx
+        sg = SecurityGuy("Securitas", 11, 6, 1234)
 
     def insertData(self):
         # user inserted all the data
         # start sequence diagram implementation from here
-        if self.isEmployee:
+
+        fullNameValid = self.isFullNameValid()
+        if not fullNameValid:
+            self.showMessage('invalid full name')
+            return
+
+        expiryDateValid = self.isExpiryDateValid()
+        if not expiryDateValid:
+            self.showMessage('invalid expiry date')
+            return
+
+        if self.isEmployee():
             registered = EmployeeSchedule.isRegistered()
             if registered:
                 self.showMessage('already registered employee')
                 return
 
-            accessLevelValid = AccessLevel.isAccessLevelValid(True, 1)  # todo: add correct params
-            if not accessLevelValid:
+            if not self.AccessLevelInput.text():
                 self.showMessage('invalid access level')
                 return
-
-            fullNameValid = self.isFullNameValid()
-            if not fullNameValid:
-                self.showMessage('invalid full name')
-                return
-
-            expiryDateValid = self.isExpiryDateValid()
-            if not expiryDateValid:
-                self.showMessage('invalid expiry date')
-                return
-
+            else:
+                al = AccessLevel(True, int(self.AccessLevelInput.text()))
+                accessLevelValid = AccessLevel.isAccessLevelValid(al)
+                if not accessLevelValid:
+                    self.showMessage('invalid access level')
+                    return
+            
+            emp = Employee(self.NameInput.text(), int(self.lineEdit.text()), int(self.AccessLevelInput.text()))
+            print(emp.fullname, emp.id, emp.accessLevel)
         # end if employee
-        self.pinAuthorization()
 
+        card = RFIDCardData(int(self.lineEdit_2.text()), int(self.lineEdit.text()), self.GuestCheckBox.isChecked())
+        print(card.expiration, card.employeeId, card.isGuest)
+        
+        self.pinAuthorization()
+       
     def isEmployee(self):
         return not self.GuestCheckBox.isChecked()
 
@@ -46,6 +60,7 @@ class Ui_InsertUserWidget(object):
 
     def _pinCallback(self, result):
         if result:
+            self.showMessage('Created Successfully')
             # todo: successful auth
             documentAttached = self.isDocumentAttached()
             if documentAttached and self.isEmployee():
@@ -59,16 +74,25 @@ class Ui_InsertUserWidget(object):
             self.showMessage('pin auth fail')
 
     def showMessage(self, text):
-        # todo: show message somewhere
-        print(text)
+        print(f'/!\\', text)
 
     def isFullNameValid(self):
-        name = str(self.NameInput.text)
-        # todo: add more checks
-        return ' ' in name
+        if not self.NameInput.text():
+            return False
+        else:
+            return True
 
     def isExpiryDateValid(self):
-        return True
+        if not self.lineEdit_2.text():
+            return False
+        else:
+            return True
+
+    def isEmployeeIDValid(self):
+        if not self.lineEdit.text():
+            return False
+        else:
+            return True
 
     def isDocumentAttached(self):
         notes = str(self.NotesText.text())
@@ -123,6 +147,9 @@ class Ui_InsertUserWidget(object):
         self.lineEdit_2.setObjectName("lineEdit_2")
         InsertUserWidget.setCentralWidget(self.centralwidget)
 
+        self.OKButton.clicked.connect(self.insertData)
+        self.CancelButton.clicked.connect(lambda: InsertUserWidget.close())
+
         self.retranslateUi(InsertUserWidget)
         QtCore.QMetaObject.connectSlotsByName(InsertUserWidget)
 
@@ -139,15 +166,4 @@ class Ui_InsertUserWidget(object):
         self.IDText.setText(_translate("InsertUserWidget", "ID:"))
         self.ExpirationDateText.setText(_translate("InsertUserWidget", "Expires:"))
 
-    @staticmethod
-    def chooseSector():
-        sector = random.rand()
-        print("Selected sector: ", sector)
-
-    @staticmethod
-    def chooseRecall():
-        recall = random.rand()
-        if recall < 100:
-            print("recalling drone")
-        else:
-            print("no need to recall")
+       
